@@ -1,13 +1,13 @@
-# Use custom Dockerfile
+# Use your custom Dockerfile
 image:
   file: Dockerfile
 
 # Tasks to run when the workspace starts
 tasks:
-  - init: echo "✅ Python environment is ready!"
-    command: jupyter lab --no-browser --ip=0.0.0.0 --port=8888
+  - init: echo "✅ Environment setup complete"
+    command: cd workspace && jupyter lab notebooks/demo.ipynb --no-browser --ip=0.0.0.0 --port=8888
 
-# Configure VS Code Extensions
+# Configure VS Code extensions
 vscode:
   extensions:
     - ms-python.python
@@ -15,7 +15,7 @@ vscode:
     - ms-python.vscode-pylance
     - donjayamanne.python-environment-manager
 
-# Ports to expose (Jupyter Lab runs on 8888)
+# Ports to expose for the Jupyter Lab UI
 ports:
   - port: 8888
     onOpen: "open-preview"
