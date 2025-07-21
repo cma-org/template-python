@@ -1,13 +1,21 @@
-image: gitpod/workspace-full
+# Use custom Dockerfile
+image:
+  file: Dockerfile
 
+# Tasks to run when the workspace starts
 tasks:
-  - init: pip install -r requirements.txt
-    command: python main.py
+  - init: echo "✅ Python environment is ready!"
+    command: jupyter lab --no-browser --ip=0.0.0.0 --port=8888
 
+# Configure VS Code Extensions
 vscode:
   extensions:
     - ms-python.python
+    - ms-toolsai.jupyter
+    - ms-python.vscode-pylance
+    - donjayamanne.python-environment-manager
 
+# Ports to expose (Jupyter Lab runs on 8888)
 ports:
-  - port: 8000
-    onOpen: ignore
+  - port: 8888
+    onOpen: open-preview
